@@ -23,7 +23,7 @@ public class MqttPublishSample {
                 "} \n";
         int qos             = 0;
         String broker       = "tcp://183.230.40.39:6002";
-        String clientId     = "6196343";
+        String clientId     = "";
         MemoryPersistence persistence = new MemoryPersistence();
 
         try {
@@ -32,15 +32,15 @@ public class MqttPublishSample {
             connOpts.setCleanSession(true);
             connOpts.setConnectionTimeout(30);
             connOpts.setKeepAliveInterval(120);
-            connOpts.setUserName("71971");
-            connOpts.setPassword("zhaiyuxiu2".toCharArray());
+            connOpts.setUserName("");
+            connOpts.setPassword("".toCharArray());
             System.out.println("Connecting to broker: "+broker);
 
             System.out.println("Connected");
 
             sampleClient.setCallback(new PushCallback());
             byte b = 0x70;
-            char chars[] = new char[]{0x07,0x00,0x01,0x00,0x02};
+            char chars[] = new char[]{0x01};
             StringBuffer sb = new StringBuffer();
 
 //            sb.append((char)0x01);
@@ -48,8 +48,8 @@ public class MqttPublishSample {
 //            sb.append((char)content.length());
 //            sb.append(content);
             sb.append(chars);
-            sb.append("22");
-            sb.append("23");
+            sb.append((char)content.length());
+            sb.append(content);
             MqttMessage message = new MqttMessage(sb.toString().getBytes());
             System.out.println("Publishing message: ");
             message.setQos(qos);
