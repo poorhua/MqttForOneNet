@@ -23,7 +23,7 @@ public class MqttPublishSample {
                 "}\n";
         int qos             = 0;
         String broker       = "tcp://183.230.40.39:6002";
-        String clientId     = "6196343";
+        String clientId     = "";
         MemoryPersistence persistence = new MemoryPersistence();
 
         try {
@@ -32,8 +32,8 @@ public class MqttPublishSample {
             connOpts.setCleanSession(true);
             connOpts.setConnectionTimeout(30);
             connOpts.setKeepAliveInterval(120);
-            connOpts.setUserName("71971");
-            connOpts.setPassword("zhaiyuxiu2".toCharArray());
+            connOpts.setUserName("");
+            connOpts.setPassword("".toCharArray());
             System.out.println("Connecting to broker: "+broker);
 
             System.out.println("Connected");
